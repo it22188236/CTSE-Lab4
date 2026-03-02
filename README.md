@@ -1,5 +1,3 @@
-# Microservices Lab - Option A Implementation
-
 ## Architecture Overview
 
 This microservices lab consists of 4 services:
