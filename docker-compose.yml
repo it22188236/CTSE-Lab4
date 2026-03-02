@@ -1,0 +1,49 @@
+services:
+  item-service:
+    build:
+      context: ./item-service/item-service
+    container_name: item-service
+    ports:
+      - "8081:8081"
+    networks:
+      - microservices-net
+
+  order-service:
+    build:
+      context: ./order-service/order-service
+    container_name: order-service
+    ports:
+      - "8082:8082"
+    networks:
+      - microservices-net
+
+  payment-service:
+    build:
+      context: ./payment-service/payment-service
+    container_name: payment-service
+    ports:
+      - "8083:8083"
+    networks:
+      - microservices-net
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+    container_name: api-gateway
+    depends_on:
+      - item-service
+      - order-service
+      - payment-service
+    environment:
+      ITEM_SERVICE_URL: http://item-service:8081
+      ORDER_SERVICE_URL: http://order-service:8082
+      PAYMENT_SERVICE_URL: http://payment-service:8083
+      EUREKA_CLIENT_ENABLED: "false"
+    ports:
+      - "8080:8080"
+    networks:
+      - microservices-net
+
+networks:
+  microservices-net:
+    driver: bridge
