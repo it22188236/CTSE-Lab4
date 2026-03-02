@@ -1,0 +1,37 @@
+# Maven
+target/
+*.jar
+*.war
+*.ear
+.flattened-pom.xml
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Java
+*.class
+*.log
+*.ctxt
+.mtj.tmp/
+*.jar
+*.jar.original
+
+# Build
+build/
+dist/
+
+# Misc
+.classpath
+.project
+.settings/
+.gradle/
+.nb-gradle/
